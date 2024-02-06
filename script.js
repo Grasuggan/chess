@@ -52,11 +52,9 @@ function setPosition(element, y) {
 /*=======================================
       #Sliders
   ==================================*/
-// Select all slides
 const slides = document.querySelectorAll(".slider-block");
 const dots = document.querySelector(".dots");
 
-// loop through slides and set each slides translateX property to index * 100%
 if (slides.length > -1) {
   slides.forEach((slide, indx) => {
     slide.style.transform = `translateX(${indx * 100}%)`;
@@ -69,23 +67,14 @@ if (slides.length > -1) {
   });
 }
 
-// select next slide button
 const nextSlide = document.querySelector(".btn-next");
-// select prev slide button
 const prevSlide = document.querySelector(".btn-prev");
-
-//select all dots
 const dot = dots.querySelectorAll(".dot");
 
-// current slide counter
 let curSlide = 0;
-// maximum number of slides
 let maxSlide = slides.length - 1;
 
-// add event listener and navigation functionality
 nextSlide.addEventListener("click", function () {
-  // check if current slide is the last and reset current slide
-  //Make the slide stop disable btn when curSlide === maxSlide
   if (curSlide === maxSlide) {
     return;
   } else if (curSlide === maxSlide - 1) {
@@ -101,15 +90,12 @@ nextSlide.addEventListener("click", function () {
   });
   let curDot = dot[curSlide];
   curDot.classList.add("active-dot");
-  //   move slide by -100%
   slides.forEach((slide, indx) => {
     slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
   });
 });
 
-// add event listener and navigation functionality
 prevSlide.addEventListener("click", function () {
-  // check if current slide is the first and reset current slide to last
   if (curSlide === 0) {
     return;
   } else if (curSlide === 1) {
